@@ -3,25 +3,19 @@ session_start();
 $role = $_SESSION['role'] ?? null;
 ?>
 
-<nav class="bg-gray-800 text-white px-4 py-3">
-    <div class="container mx-auto flex justify-between">
-        <a href="index.php" class="text-lg font-semibold">HMS</a>
-        <ul class="flex space-x-4">
-            <?php if ($role === 'admin'): ?>
-                <li><a href="user_management.php" class="hover:text-gray-400">User Management</a></li>
-            <?php elseif ($role === 'doctor'): ?>
-                <li><a href="appointments.php" class="hover:text-gray-400">Appointments</a></li>
-            <?php elseif ($role === 'nurse'): ?>
-                <li><a href="monitoring.php" class="hover:text-gray-400">Patient Monitoring</a></li>
-            <?php elseif ($role === 'patient'): ?>
-                <li><a href="book_appointment.php" class="hover:text-gray-400">Book Appointment</a></li>
-            <?php endif; ?>
-            <?php if ($role): ?>
-                <li><a href="logout.php" class="hover:text-gray-400">Logout</a></li>
-            <?php else: ?>
-                <li><a href="login.php" class="hover:text-gray-400">Login</a></li>
-                <li><a href="register.php" class="hover:text-gray-400">Register</a></li>
-            <?php endif; ?>
-        </ul>
-    </div>
+<nav class="bg-blue-500 text-white p-4">
+    <ul class="flex justify-between">
+        <li><a href="/dashboard/<?php echo strtolower($_SESSION['role']); ?>" class="hover:underline">Dashboard</a></li>
+        <?php if ($_SESSION['role'] === 'Admin'): ?>
+            <li><a href="/manage-users" class="hover:underline">Manage Users</a></li>
+        <?php elseif ($_SESSION['role'] === 'Doctor'): ?>
+            <li><a href="/appointments" class="hover:underline">Appointments</a></li>
+        <?php elseif ($_SESSION['role'] === 'Nurse'): ?>
+            <li><a href="/tasks" class="hover:underline">Tasks</a></li>
+        <?php elseif ($_SESSION['role'] === 'Patient'): ?>
+            <li><a href="/my-records" class="hover:underline">My Records</a></li>
+        <?php endif; ?>
+        <li><a href="/logout" class="hover:underline">Logout</a></li>
+    </ul>
 </nav>
+

@@ -1,0 +1,5 @@
+<?php
+// Declare the DSN
+
+
+?>

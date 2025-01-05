@@ -1,8 +1,3 @@
-<?php
-require 'views/navbar.php'; // Include navbar
-require 'controllers/login_controller.php'; // Include login logic
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
